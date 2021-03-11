@@ -9,14 +9,17 @@ if (args[2] === undefined) {
     
 } else {
   request(ENDPOINT + params, (error, response, body) => {
-    console.log('error:', error);
-    console.log('statusCode:', response && response.statusCode);
-    //console.log('body:', body);
-    const data = JSON.parse(body);
-    try {
-      console.log(data[0]['description']); //first entry of weight object
-    } catch (err) {
-      console.log('Breed does not exist in database');
+    if(error) {
+      console.log('error:', error);
+      console.log('statusCode:', response && response.statusCode);
+    } else {
+        //console.log('body:', body);
+      const data = JSON.parse(body);
+      try {
+        console.log(data[0]['description']); //first entry of weight object
+      } catch (err) {
+        console.log('Breed does not exist in database');
+      }
     }
   });
 }
