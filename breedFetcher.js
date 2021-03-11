@@ -3,7 +3,6 @@ const request = require('request');
 const ENDPOINT = 'https://api.thecatapi.com/v1/breeds/search';
 
 const fetchBreedDescription = (breedName, callback) => {
-    console.log(breedName)
     if (breedName === undefined) {
       callback('No breed defined', null);
   } else {
